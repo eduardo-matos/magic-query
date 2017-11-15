@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 
-export default function urlEncodedParser(config) {
+export default function middleware(config) {
   return (req, res, next) => {
     req.q = {};
     _.forOwn(config, (parse, param) => {
