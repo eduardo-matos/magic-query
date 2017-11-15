@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc -x tests mocha --require babel-core/register tests",
     "lint": "eslint src tests",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "build": "babel src/ --out-dir dist/"
   },
   "keywords": [],
   "author": "",
