@@ -9,4 +9,4 @@ export default {
   [Types.BOOLEAN]: value => {
     return !_.includes(['', '0', 'no', 'false', 'nope', undefined], value);
   },
-}
+};
