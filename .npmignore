@@ -1,0 +1,9 @@
+src/
+tests/
+.nyc_output/
+.babelrc
+.editorconfig
+.eslintrc.json
+.npmrc
+.travis.yml
+*.tgz
