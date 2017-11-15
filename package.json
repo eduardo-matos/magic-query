@@ -1,0 +1,31 @@
+{
+  "name": "query-parser",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "nyc -x tests mocha --require babel-core/register tests",
+    "lint": "eslint src tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1",
+    "chai": "4.1.2",
+    "chai-http": "3.0.0",
+    "eslint": "4.11.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "express": "4.16.2",
+    "mocha": "4.0.1",
+    "nyc": "11.3.0"
+  },
+  "dependencies": {
+    "babel-core": "6.26.0",
+    "lodash": "4.17.4"
+  }
+}

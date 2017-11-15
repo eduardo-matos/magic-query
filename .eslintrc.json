@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb-base",
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true,
+    "beforeEach": true
+  },
+  "rules": {
+    "arrow-body-style": 0,
+    "no-use-before-define": 0,
+    "arrow-parens": [0, "as-needed"]
+  }
+}
