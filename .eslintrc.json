@@ -11,6 +11,6 @@
     "no-use-before-define": 0,
     "arrow-parens": [0, "as-needed"],
     "import/prefer-default-export": 0,
-    "no-restricted-globals": []
+    "no-restricted-globals": 0
   }
 }

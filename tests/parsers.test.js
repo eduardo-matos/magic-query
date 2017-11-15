@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import { int, float, str, bool, Type } from '../src/parsers';
 
 describe('Parsers', () => {
-
   describe('Integer', () => {
     it('Parses integer', () => {
       expect(int('10')).to.equal(10);
