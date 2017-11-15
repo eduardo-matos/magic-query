@@ -1,10 +1,10 @@
 import sinon from 'sinon';
 import { expect } from 'chai';
-import middleware from '../src/middleware';
+import queryParser from '../src/middleware';
 import { Type } from '../src/parsers';
 
 
-describe('Middleware', () => {
+describe('QueryParser middleware', () => {
   let req;
   let res;
   let next;
@@ -16,25 +16,25 @@ describe('Middleware', () => {
   });
 
   it('Returns a function that calls next', () => {
-    middleware({})(req, res, next);
+    queryParser({})(req, res, next);
     expect(next.called).to.equal(true);
   });
 
   it('Parses string', () => {
-    middleware({ id: Type.STRING })(req, res, next);
+    queryParser({ id: Type.STRING })(req, res, next);
     expect(req.q.id).to.be.a('string');
     expect(req.q.id).to.equal('7');
   });
 
   it('Parses integer', () => {
-    middleware({ id: Type.INTEGER })(req, res, next);
+    queryParser({ id: Type.INTEGER })(req, res, next);
     expect(req.q.id).to.be.a('number');
     expect(req.q.id).to.equal(7);
   });
 
   it('Parses float', () => {
     req.query.height = '1.78';
-    middleware({ height: Type.FLOAT })(req, res, next);
+    queryParser({ height: Type.FLOAT })(req, res, next);
     expect(req.q.height).to.be.a('number');
     expect(req.q.height).to.equal(1.78);
   });
@@ -49,7 +49,7 @@ describe('Middleware', () => {
       spam: 'yay',
     });
 
-    middleware({
+    queryParser({
       foo: Type.BOOLEAN,
       bar: Type.BOOLEAN,
       baz: Type.BOOLEAN,
@@ -72,7 +72,7 @@ describe('Middleware', () => {
   it('Parses custom format', () => {
     req.query.foo = 'foo';
 
-    middleware({ foo: value => `${value}bar` })(req, res, next);
+    queryParser({ foo: value => `${value}bar` })(req, res, next);
     expect(req.q.foo).to.equal('foobar');
   });
 });

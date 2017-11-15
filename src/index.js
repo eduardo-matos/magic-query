@@ -1,3 +1,5 @@
-import middleware from './middleware';
+import queryParser from './middleware';
 
-export { middleware };
+
+
+export { queryParser };
