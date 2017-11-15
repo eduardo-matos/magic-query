@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardo-matos/query-parser.git"
+  },
   "scripts": {
     "test": "nyc -x tests mocha --require babel-core/register tests",
     "lint": "eslint src tests",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "build": "babel src/ --out-dir dist/"
+    "build": "babel src/ --out-dir dist/",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "keywords": [],
   "author": "",
