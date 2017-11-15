@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "nyc -x tests mocha --require babel-core/register tests",
-    "lint": "eslint src tests"
+    "lint": "eslint src tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "babel-preset-stage-2": "6.24.1",
     "chai": "4.1.2",
     "chai-http": "3.0.0",
+    "coveralls": "3.0.0",
     "eslint": "4.11.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-import": "2.8.0",
