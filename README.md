@@ -6,6 +6,8 @@ Parses url encoded parameters to useful JavaScript objects.
 
 ## Getting started
 
+### Basic
+
 ```js
 const { queryParser, Type } = require('query-parser');
 const app = require('express')();
@@ -25,7 +27,7 @@ app.get('/', middleware, (req, res) => {
 });
 ```
 
-**Custom types**
+### Custom types
 
 ```js
 const middleware = queryParser({
@@ -38,7 +40,7 @@ app.get('/', middleware, (req, res) => {
 });
 ```
 
-**Getting values from other fields**
+### Getting values from other fields
 
 ```js
 const middleware = queryParser({
@@ -56,7 +58,7 @@ app.get('/', middleware, (req, res) => {
 });
 ```
 
-**Configure default value**
+### Configure default value
 
 ```js
 const middleware = queryParser({
@@ -69,3 +71,21 @@ app.get('/', middleware, (req, res) => {
   console.log(req.q); // {name: 'unknown', dateCreated: Date(...)}
 });
 ```
+
+## Native parsers
+
+1. `Type.integer`
+    * default: `0`
+
+1. `Type.string`
+    * default: `''`
+
+1. `Type.float`
+    * default: `0.0`
+
+1. `Type.boolean`
+    * default: `false`
+
+1. `Type.date`
+    * default: `undefined`
+    * format: `YYYY-MM-DD`
