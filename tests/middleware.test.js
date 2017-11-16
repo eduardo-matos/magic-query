@@ -1,10 +1,10 @@
 import sinon from 'sinon';
 import { expect } from 'chai';
-import queryParser from '../src/middleware';
+import magicQuery from '../src/middleware';
 import { Type } from '../src/parsers';
 
 
-describe('QueryParser middleware', () => {
+describe('magicQuery middleware', () => {
   let req;
   let res;
   let next;
@@ -16,25 +16,25 @@ describe('QueryParser middleware', () => {
   });
 
   it('Returns a function that calls next', () => {
-    queryParser({})(req, res, next);
+    magicQuery({})(req, res, next);
     expect(next.called).to.equal(true);
   });
 
   it('Parses string', () => {
-    queryParser({ id: Type.string() })(req, res, next);
+    magicQuery({ id: Type.string() })(req, res, next);
     expect(req.q.id).to.be.a('string');
     expect(req.q.id).to.equal('7');
   });
 
   it('Parses integer', () => {
-    queryParser({ id: Type.integer() })(req, res, next);
+    magicQuery({ id: Type.integer() })(req, res, next);
     expect(req.q.id).to.be.a('number');
     expect(req.q.id).to.equal(7);
   });
 
   it('Parses float', () => {
     req.query.height = '1.78';
-    queryParser({ height: Type.float() })(req, res, next);
+    magicQuery({ height: Type.float() })(req, res, next);
     expect(req.q.height).to.be.a('number');
     expect(req.q.height).to.equal(1.78);
   });
@@ -49,7 +49,7 @@ describe('QueryParser middleware', () => {
       spam: 'yay',
     });
 
-    queryParser({
+    magicQuery({
       foo: Type.boolean(),
       bar: Type.boolean(),
       baz: Type.boolean(),
@@ -72,7 +72,7 @@ describe('QueryParser middleware', () => {
   describe('Parses date', () => {
     it('Default format is year-month-day', () => {
       req.query.birth = '2012-11-07';
-      queryParser({ birth: Type.date() })(req, res, next);
+      magicQuery({ birth: Type.date() })(req, res, next);
 
       expect(req.q.birth).to.be.instanceOf(Date);
       expect(req.q.birth.getFullYear()).to.equal(2012);
@@ -85,7 +85,7 @@ describe('QueryParser middleware', () => {
 
     it('Accept custom format', () => {
       req.query.birth = '05201009';
-      queryParser({ birth: Type.date({ format: 'DDYYYYMM' }) })(req, res, next);
+      magicQuery({ birth: Type.date({ format: 'DDYYYYMM' }) })(req, res, next);
 
       expect(req.q.birth).to.be.instanceOf(Date);
       expect(req.q.birth.getFullYear()).to.equal(2010);
@@ -101,7 +101,7 @@ describe('QueryParser middleware', () => {
     it('Parses custom format', () => {
       req.query.foo = 'foo';
 
-      queryParser({ foo: value => `${value}bar` })(req, res, next);
+      magicQuery({ foo: value => `${value}bar` })(req, res, next);
       expect(req.q.foo).to.equal('foobar');
     });
 
@@ -109,7 +109,7 @@ describe('QueryParser middleware', () => {
       req.query.foo = 'foo';
       req.query.bar = 'bar';
 
-      queryParser({ foo(value) { return value + this.bar; } })(req, res, next);
+      magicQuery({ foo(value) { return value + this.bar; } })(req, res, next);
       expect(req.q.foo).to.equal('foobar');
     });
 
@@ -117,14 +117,14 @@ describe('QueryParser middleware', () => {
       req.query.foo = 'foo';
       req.query.bar = 'bar';
 
-      queryParser({ barfoo() { return this.bar + this.foo; } })(req, res, next);
+      magicQuery({ barfoo() { return this.bar + this.foo; } })(req, res, next);
       expect(req.q.barfoo).to.equal('barfoo');
     });
 
     it('Prefents query modification', () => {
       req.query.foo = 'foo';
 
-      queryParser({ foo() { this.foo += 'bar'; } })(req, res, next);
+      magicQuery({ foo() { this.foo += 'bar'; } })(req, res, next);
       expect(req.query.foo).to.equal('foo');
     });
   });

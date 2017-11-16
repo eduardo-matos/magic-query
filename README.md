@@ -1,4 +1,4 @@
-# Query Parser
+# Magic Query
 [![Build Status](https://travis-ci.org/eduardo-matos/query-parser.svg?branch=master)](https://travis-ci.org/eduardo-matos/query-parser)
 [![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/query-parser/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/query-parser?branch=master)
 
@@ -9,11 +9,11 @@ Parses url encoded parameters to useful JavaScript objects.
 ### Basic
 
 ```js
-const { queryParser, Type } = require('query-parser');
+const { magicQuery, Type } = require('query-parser');
 const app = require('express')();
 
 // configure fields
-const middleware = queryParser({
+const middleware = magicQuery({
   id: Type.int(),
   name: Type.string(),
   height: Type.float(),
@@ -30,7 +30,7 @@ app.get('/', middleware, (req, res) => {
 ### Custom types
 
 ```js
-const middleware = queryParser({
+const middleware = magicQuery({
   height: value => parseFloat(value) * 3.28084, // meters to feet
 });
 
@@ -43,7 +43,7 @@ app.get('/', middleware, (req, res) => {
 ### Getting values from other fields
 
 ```js
-const middleware = queryParser({
+const middleware = magicQuery({
   billingStart: function() {
     moment(this.billing, 'DD-MM-YYYY').format('YYYY-MM-DD 00:00:00');
   },
@@ -61,7 +61,7 @@ app.get('/', middleware, (req, res) => {
 ### Configure default value
 
 ```js
-const middleware = queryParser({
+const middleware = magicQuery({
   name: Type.string({ default: 'unknown' }),
   dateCreated: Type.date({ default: () => new Date() }),
 });

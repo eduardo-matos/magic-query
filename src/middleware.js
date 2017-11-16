@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 
-export default function queryParser(config) {
+export default function magicQuery(config) {
   return (req, res, next) => {
     req.q = {};
     _.forOwn(config, (parse, param) => {

@@ -1,5 +1,5 @@
-import queryParser from './middleware';
+import magicQuery from './middleware';
 import { Type } from './parsers';
 
 
-export { queryParser, Type };
+export { magicQuery, Type };
