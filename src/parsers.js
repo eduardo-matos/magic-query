@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 
 
 export function integer() {
@@ -23,9 +24,14 @@ export function boolean() {
   return value => !_.includes(['', '0', 'no', 'false', 'nope', undefined], value);
 }
 
+export function date(options = { format: 'YYYY-MM-DD' }) {
+  return value => moment(value, options.format).toDate();
+}
+
 export const Type = {
   integer,
   float,
   string,
   boolean,
+  date,
 };
