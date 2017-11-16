@@ -34,7 +34,6 @@
     "sinon": "4.1.2"
   },
   "dependencies": {
-    "babel-core": "6.26.0",
     "lodash": "4.17.4",
     "moment": "2.19.2"
   }
