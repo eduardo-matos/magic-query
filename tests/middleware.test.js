@@ -21,20 +21,20 @@ describe('QueryParser middleware', () => {
   });
 
   it('Parses string', () => {
-    queryParser({ id: Type.STRING })(req, res, next);
+    queryParser({ id: Type.string() })(req, res, next);
     expect(req.q.id).to.be.a('string');
     expect(req.q.id).to.equal('7');
   });
 
   it('Parses integer', () => {
-    queryParser({ id: Type.INTEGER })(req, res, next);
+    queryParser({ id: Type.integer() })(req, res, next);
     expect(req.q.id).to.be.a('number');
     expect(req.q.id).to.equal(7);
   });
 
   it('Parses float', () => {
     req.query.height = '1.78';
-    queryParser({ height: Type.FLOAT })(req, res, next);
+    queryParser({ height: Type.float() })(req, res, next);
     expect(req.q.height).to.be.a('number');
     expect(req.q.height).to.equal(1.78);
   });
@@ -50,13 +50,13 @@ describe('QueryParser middleware', () => {
     });
 
     queryParser({
-      foo: Type.BOOLEAN,
-      bar: Type.BOOLEAN,
-      baz: Type.BOOLEAN,
-      qux: Type.BOOLEAN,
-      empty: Type.BOOLEAN,
-      undef: Type.BOOLEAN,
-      spam: Type.BOOLEAN,
+      foo: Type.boolean(),
+      bar: Type.boolean(),
+      baz: Type.boolean(),
+      qux: Type.boolean(),
+      empty: Type.boolean(),
+      undef: Type.boolean(),
+      spam: Type.boolean(),
     })(req, res, next);
 
     expect(req.q.foo).to.equal(false);
