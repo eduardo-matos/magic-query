@@ -55,3 +55,17 @@ app.get('/', middleware, (req, res) => {
   console.log(req.q); // {billingStart: Date(2003, 1, 1, 0, 0, 0), billingEnd: Date(2003, 1, 1, 23, 59, 59)}
 });
 ```
+
+**Configure default value**
+
+```js
+const middleware = queryParser({
+  name: Type.string({ default: 'unknown' }),
+  dateCreated: Type.date({ default: () => new Date() }),
+});
+
+// GET /?
+app.get('/', middleware, (req, res) => {
+  console.log(req.q); // {name: 'unknown', dateCreated: Date(...)}
+});
+```
