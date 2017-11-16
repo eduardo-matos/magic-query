@@ -31,7 +31,13 @@ export function boolean(config = { default: false }) {
 }
 
 export function date(config = { format: 'YYYY-MM-DD' }) {
-  return value => (value ? moment(value, config.format).toDate() : executeIfFunction(config.default));
+  return value => {
+    if (!value) {
+      return executeIfFunction(config.default);
+    }
+
+    return moment(value, config.format).toDate();
+  };
 }
 
 function executeIfFunction(value) {
