@@ -54,7 +54,7 @@ const middleware = queryParser({
 
 // GET /?billing=01-02-2003
 app.get('/', middleware, (req, res) => {
-  console.log(req.q); // {billingStart: Date(2003, 1, 1, 0, 0, 0), billingEnd: Date(2003, 1, 1, 23, 59, 59)}
+  console.log(req.q); // {billingStart: '2003-02-01 00:00:00', billingEnd: '2003-02-01 23:59:59'}
 });
 ```
 
