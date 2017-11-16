@@ -10,6 +10,10 @@ describe('Parsers', () => {
     it('Returns zero if cannot parse', () => {
       expect(integer()('foo')).to.equal(0);
     });
+
+    it('Accepts default', () => {
+      expect(integer({ default: 99 })()).to.equal(99);
+    });
   });
 
   describe('String', () => {
@@ -21,6 +25,10 @@ describe('Parsers', () => {
       const obj = { toString() { return 'fish'; } };
       expect(string()(obj)).to.equal('fish');
     });
+
+    it('Accepts default', () => {
+      expect(string({ default: 'Hooray!' })()).to.equal('Hooray!');
+    });
   });
 
   describe('Float', () => {
@@ -30,6 +38,10 @@ describe('Parsers', () => {
 
     it('Returns zero if cannot parse', () => {
       expect(float()('spam')).to.equal(0.0);
+    });
+
+    it('Accepts default', () => {
+      expect(float({ default: 11.1 })()).to.equal(11.1);
     });
   });
 
@@ -42,6 +54,10 @@ describe('Parsers', () => {
     it('Recognizes truthy values', () => {
       const falsy = ['yes', '1', '10', 'true', 'yep', 'spam'];
       falsy.forEach(value => expect(boolean()(value)).to.be.true);
+    });
+
+    it('Accepts default', () => {
+      expect(boolean({ default: true })()).to.equal(true);
     });
   });
 

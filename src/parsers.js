@@ -2,26 +2,32 @@ import _ from 'lodash';
 import moment from 'moment';
 
 
-export function integer() {
+export function integer(config = { default: 0 }) {
   return value => {
     const retVal = parseInt(value, 10);
-    return isNaN(retVal) ? 0 : retVal;
+    return isNaN(retVal) ? config.default : retVal;
   };
 }
 
-export function float() {
+export function float(config = { default: 0.0 }) {
   return value => {
     const retVal = parseFloat(value);
-    return isNaN(retVal) ? 0.0 : retVal;
+    return isNaN(retVal) ? config.default : retVal;
   };
 }
 
-export function string() {
-  return value => `${value}`;
+export function string(config = { default: '' }) {
+  return value => (value ? `${value}` : config.default);
 }
 
-export function boolean() {
-  return value => !_.includes(['', '0', 'no', 'false', 'nope', undefined], value);
+export function boolean(config = { default: false }) {
+  return value => {
+    if (value === undefined) {
+      return config.default;
+    }
+
+    return !_.includes(['', '0', 'no', 'false', 'nope'], value);
+  };
 }
 
 export function date(options = { format: 'YYYY-MM-DD' }) {
