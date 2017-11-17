@@ -1,6 +1,6 @@
 # Magic Query
-[![Build Status](https://travis-ci.org/eduardo-matos/query-parser.svg?branch=master)](https://travis-ci.org/eduardo-matos/query-parser)
-[![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/query-parser/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/query-parser?branch=master)
+[![Build Status](https://travis-ci.org/eduardo-matos/magic-query.svg?branch=master)](https://travis-ci.org/eduardo-matos/magic-query)
+[![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/magic-query/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/query-parser?branch=master)
 
 Parses url encoded parameters to useful JavaScript objects.
 
