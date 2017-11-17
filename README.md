@@ -8,6 +8,10 @@ Parses url encoded parameters to useful JavaScript objects.
 
 ### Basic
 
+```
+npm install magic-query
+```
+
 ```js
 const { magicQuery, Type } = require('magic-query');
 const app = require('express')();
