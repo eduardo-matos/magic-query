@@ -14,7 +14,12 @@
     "build": "babel src/ --out-dir dist/",
     "prepublishOnly": "npm run test && npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "middleware",
+    "querystring",
+    "parser"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
