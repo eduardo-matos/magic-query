@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eduardo-matos/query-parser.git"
+    "url": "git+https://github.com/eduardo-matos/magic-query.git"
   },
   "scripts": {
     "test": "nyc -x tests mocha --require babel-core/register tests",

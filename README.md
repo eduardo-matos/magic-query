@@ -1,6 +1,6 @@
 # Magic Query
 [![Build Status](https://travis-ci.org/eduardo-matos/magic-query.svg?branch=master)](https://travis-ci.org/eduardo-matos/magic-query)
-[![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/magic-query/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/query-parser?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/magic-query/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/magic-query?branch=master)
 
 Parses url encoded parameters to useful JavaScript objects.
 
@@ -9,7 +9,7 @@ Parses url encoded parameters to useful JavaScript objects.
 ### Basic
 
 ```js
-const { magicQuery, Type } = require('query-parser');
+const { magicQuery, Type } = require('magic-query');
 const app = require('express')();
 
 // configure fields
