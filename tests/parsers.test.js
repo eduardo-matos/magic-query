@@ -138,6 +138,7 @@ describe('Parsers', () => {
       expect(Type.string).to.equal(string);
       expect(Type.boolean).to.equal(boolean);
       expect(Type.date).to.equal(date);
+      expect(Type.array).to.equal(array);
     });
   });
 });

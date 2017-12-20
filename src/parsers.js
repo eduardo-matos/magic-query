@@ -56,4 +56,5 @@ export const Type = {
   string,
   boolean,
   date,
+  array,
 };
