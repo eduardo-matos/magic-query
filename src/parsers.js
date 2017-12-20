@@ -22,11 +22,11 @@ export function string(config = { default: '' }) {
 
 export function boolean(config = { default: false }) {
   return value => {
-    if (value === undefined) {
+    if (!value) {
       return executeIfFunction(config.default);
     }
 
-    return !_.includes(['', '0', 'no', 'false', 'nope'], value);
+    return !_.includes(['0', 'no', 'false', 'nope'], value);
   };
 }
 

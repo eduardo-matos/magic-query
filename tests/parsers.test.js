@@ -70,6 +70,7 @@ describe('Parsers', () => {
 
     it('Accepts default', () => {
       expect(boolean({ default: true })()).to.equal(true);
+      expect(boolean({ default: true })('')).to.equal(true);
     });
 
     it('Accepts default as function', () => {
