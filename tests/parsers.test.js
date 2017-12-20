@@ -69,12 +69,12 @@ describe('Parsers', () => {
     });
 
     it('Accepts default', () => {
-      expect(boolean({ default: true })()).to.equal(true);
-      expect(boolean({ default: true })('')).to.equal(true);
+      expect(boolean({ default: true })()).to.be.true;
+      expect(boolean({ default: true })('')).to.be.true;
     });
 
     it('Accepts default as function', () => {
-      expect(boolean({ default: () => true })()).to.equal(true);
+      expect(boolean({ default: () => true })()).to.be.true;
     });
   });
 
