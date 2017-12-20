@@ -40,6 +40,12 @@ export function date(config = { format: 'YYYY-MM-DD' }) {
   };
 }
 
+export function array(config = { default: [], delimiter: ',' }) {
+  return value => {
+    return value ? value.split(config.delimiter) : config.default;
+  };
+}
+
 function executeIfFunction(value) {
   return _.isFunction(value) ? value() : value;
 }

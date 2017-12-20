@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { integer, float, string, boolean, date, Type } from '../src/parsers';
+import { integer, float, string, boolean, date, array, Type } from '../src/parsers';
 
 describe('Parsers', () => {
   describe('Integer', () => {
@@ -110,6 +110,24 @@ describe('Parsers', () => {
     it('Accepts default as function', () => {
       const dt = date({ default: () => new Date(2004, 5, 2) })();
       expect(dt).to.eql(new Date(2004, 5, 2));
+    });
+  });
+
+  describe('Array', () => {
+    it('Breaks on comma by default', () => {
+      expect(array()('foo,1,baz')).to.eql(['foo', '1', 'baz']);
+    });
+
+    it('Breaks on custom delimiter', () => {
+      expect(array({ delimiter: '@' })('foo,1@@baz')).to.eql(['foo,1', '', 'baz']);
+    });
+
+    it('Default is empty array', () => {
+      expect(array()('')).to.eql([]);
+    });
+
+    it('Configure default value', () => {
+      expect(array({ default: ['yay'] })()).to.eql(['yay']);
     });
   });
 

@@ -23,11 +23,12 @@ const middleware = magicQuery({
   height: Type.float(),
   valid: Type.boolean(),
   birth: Type.date(),
+  friends: Type.array(),
 });
 
-// GET /?id=4&name=John&height=1.78&valid=no&birth=1987-01-16
+// GET /?id=4&name=John&height=1.78&valid=no&birth=1987-01-16&friends=kevin,elisa
 app.get('/', middleware, (req, res) => {
-  console.log(req.q); // {id: 4, name: 'John', height: 1.78, valid: false, birth: Date(1987, 0, 16)}
+  console.log(req.q); // {id: 4, name: 'John', height: 1.78, valid: false, birth: Date(1987, 0, 16), friends: ['kevin', 'elisa']}
 });
 ```
 
@@ -93,3 +94,7 @@ app.get('/', middleware, (req, res) => {
 1. `Type.date`
     * default: `undefined`
     * format: `YYYY-MM-DD`
+
+1. `Type.array`
+    * default: `[]`
+    * delimiter: `,`
