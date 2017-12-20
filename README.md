@@ -18,7 +18,7 @@ const app = require('express')();
 
 // configure fields
 const middleware = magicQuery({
-  id: Type.int(),
+  id: Type.integer(),
   name: Type.string(),
   height: Type.float(),
   valid: Type.boolean(),
