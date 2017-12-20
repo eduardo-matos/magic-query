@@ -79,9 +79,6 @@ describe('Parsers', () => {
   });
 
   describe('Date', () => {
-    // it('Default format is year-month-day', () => {
-    // it('Accept custom format', () => {
-
     it('Default format is year-month-day', () => {
       const dt = date()('2002-05-07');
       expect(dt).to.be.instanceOf(Date);
